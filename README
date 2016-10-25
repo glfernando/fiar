@@ -1,0 +1,7 @@
+Fiar Is Another ROM
+
+Fiar is a minimal x86 ROM which is in charge of loading FSBL (first stage
+boot loader) and execute it.
+
+Right now it has only support for minnomax board
+http://wiki.minnowboard.org/MinnowBoard_Wiki_Home
