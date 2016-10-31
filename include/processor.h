@@ -23,4 +23,7 @@
 #define DATA_SEGMENT	0x18
 #define CODE64_SEGMENT	0x20
 
+/* CPUID */
+#define CUPID_FEATURE_MTRR	(1 << 12)
+
 #endif /* _PROCESSOR_H */

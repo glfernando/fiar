@@ -45,6 +45,7 @@ LINKER_SCRIPT := fiar.lds
 objs :=
 
 include cpu/Makefile
+include soc/Makefile
 
 # print variable for debugging
 print-%  : ; @echo $* = $($*)

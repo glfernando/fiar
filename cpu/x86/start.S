@@ -6,19 +6,47 @@
 
 #include <processor.h>
 
+.global _start
+.global _car_init_ret
+
 .text
 hello_world:
-	.ascii	"Hello World! from ROM\n\r"
+	.ascii	"Hello World! stack ready!\n\r"
 	len	= . - hello_world
 
+car_error_msg:
+	.ascii	"Error setting up CAR!\n\r"
+	car_error_len	= . - car_error_msg
+
 .code32
-.global _start
 _start:
-	## print hello world to the console
+	## setup cache as ram (platform specific)
+	jmp	_car_init
+_car_init_ret:
+	## we should have a valid address in eax (size in ecx)
+	test	$-1, %eax	# -1 means invalid address (error)
+	je	_car_error
+
+	## lets use CAR as stack
+	lea	(%eax, %ecx), %esp	# load stack at the TOP of CAR
+
+	# quick stack test
+	call	stack_test
+
+	## if we came back here stack is working fine
 	mov	$len, %cx
 	mov	$hello_world, %esi
 	jmp	print_and_hang
 	jmp .
+
+stack_test:
+	mov	(%esp), %eax
+	ret
+
+_car_error:
+	mov	$car_error_len, %ecx
+	mov	$car_error_msg, %esi
+	jmp	print_and_hang
 
 print_and_hang:
 
