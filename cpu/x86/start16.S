@@ -20,7 +20,7 @@ _start16:
 
 	## enter protect mode
 	mov	%cr0, %eax
-	mov	$X86_CR0_PE, %eax
+	or	$X86_CR0_PE, %eax
 	mov	%eax, %cr0
 
 	## load all segment register
