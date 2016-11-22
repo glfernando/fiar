@@ -13,3 +13,5 @@ endif
 ifeq ($(ARCH),x86_64)
 include $(lib_dir)/x86/Makefile
 endif
+
+objs += $(lib_dir)/printf.o

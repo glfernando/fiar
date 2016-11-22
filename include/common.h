@@ -11,5 +11,6 @@
 #include <stddef.h>
 #include <stdarg.h>
 #include <attribute.h>
+#include <printf.h>
 
 #endif /* _COMMON_H */
