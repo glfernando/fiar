@@ -7,4 +7,4 @@
 mkfile_path := $(lastword $(MAKEFILE_LIST))
 cdir := $(patsubst %/,%,$(dir $(mkfile_path)))
 
-objs += $(cdir)/car.o
+objs += $(cdir)/car.o $(cdir)/baytrail.o

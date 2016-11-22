@@ -5,3 +5,11 @@ boot loader) and execute it.
 
 Right now it has only support for minnomax board
 http://wiki.minnowboard.org/MinnowBoard_Wiki_Home
+And bochs emulator
+http://bochs.sourceforge.net/
+
+# to compile the code
+make TARGET=<target> clean all
+
+Where <target> can be minnowmax or bochs. If no target is passed the default
+one is minnowmax

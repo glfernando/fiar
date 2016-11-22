@@ -41,3 +41,4 @@ _fiar.lds
 *.rom
 *.map
 .*
+include/config.h

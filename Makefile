@@ -42,6 +42,16 @@ OBJCPYFLAGS = -S --gap-fill 0xff
 
 LINKER_SCRIPT := fiar.lds
 
+TARGET ?= minnowmax
+
+ifeq ($(TARGET), minnowmax)
+include Minnowmax.mk
+else ifeq ($(TARGET), bochs)
+include Bochs.mk
+else
+$(error not valid target $(TARGET))
+endif
+
 objs :=
 
 include cpu/Makefile
@@ -66,12 +76,15 @@ fiar.elf : $(objs) _fiar.lds
 _fiar.lds : $(LINKER_SCRIPT)
 	$(Q)$(CC) $(CFLAGS) -E -x assembler-with-cpp -P -o $@ $<
 
-%.o : %.S
+%.o : %.S config_file
 	$(Q)$(CC) $(CFLAGS) -c $< -o $@
 
-%.o : %.c
+%.o : %.c config_file
 	$(Q)$(CC) $(CFLAGS) -c $< -o $@
+
+config_file : $(CONFIG_FILE)
+	$(Q)cp $< include/config.h
 
 clean:
 	$(Q)find -name *.o | xargs rm -f
-	$(Q)rm -f fiar.elf fiar.bin *.map _fiar.lds
+	$(Q)rm -f fiar.elf fiar.bin *.map _fiar.lds include/config.h

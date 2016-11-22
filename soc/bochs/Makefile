@@ -6,10 +6,5 @@
 
 mkfile_path := $(lastword $(MAKEFILE_LIST))
 cdir := $(patsubst %/,%,$(dir $(mkfile_path)))
-soc_dir := $(cdir)
 
-ifeq ($(SOC), baytrail)
-include $(soc_dir)/baytrail/Makefile
-else ifeq ($(SOC), bochs)
-include $(soc_dir)/bochs/Makefile
-endif
+objs += $(cdir)/car.o
