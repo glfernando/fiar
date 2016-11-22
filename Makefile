@@ -58,6 +58,7 @@ include cpu/Makefile
 include soc/Makefile
 include lib/Makefile
 include init/Makefile
+include main/Makefile
 include drivers/Makefile
 
 # print variable for debugging

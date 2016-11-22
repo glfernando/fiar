@@ -13,6 +13,8 @@ __weak void cpu_init() {}
 __weak void soc_init() {}
 __weak void board_init() {}
 
+extern int main(void);
+
 __noreturn void init(void)
 {
 	soc_early_init();
@@ -24,6 +26,8 @@ __noreturn void init(void)
 	cpu_init();
 	soc_init();
 	board_init();
+
+	main();
 
 	while (1)
 		asm ("pause");
