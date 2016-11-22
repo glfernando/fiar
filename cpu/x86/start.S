@@ -33,6 +33,8 @@ _car_init_ret:
 	# quick stack test
 	call	stack_test
 
+	call	init
+
 	## if we came back here stack is working fine
 	mov	$len, %cx
 	mov	$hello_world, %esi
