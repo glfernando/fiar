@@ -47,6 +47,7 @@ objs :=
 include cpu/Makefile
 include soc/Makefile
 include lib/Makefile
+include drivers/Makefile
 
 # print variable for debugging
 print-%  : ; @echo $* = $($*)
