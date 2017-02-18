@@ -10,6 +10,11 @@
 #define TEXT_BASE	0xffff8000	/* 32K */
 #define TSC_FREQ	12000000
 
+#define FSP_ADDR	0xfffc0000
+
+#define UCODE_ADDR	0xfffb0000
+#define UCODE_SIZE	0xcc00
+
 #define MINNOWMAX
 
 #endif /* _CONFIG_H */

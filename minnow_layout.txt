@@ -1,0 +1,3 @@
+007b0000:007bffff microcode
+007c0000:007f7fff fsp
+007f8000:007fffff bootrom

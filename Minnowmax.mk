@@ -6,3 +6,4 @@
 
 CONFIG_FILE=include/config_minnowmax.h
 SOC=baytrail
+USE_FSP ?= 1
