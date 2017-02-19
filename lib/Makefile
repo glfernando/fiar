@@ -15,3 +15,4 @@ include $(lib_dir)/x86/Makefile
 endif
 
 objs += $(lib_dir)/printf.o
+objs += $(lib_dir)/string.o
