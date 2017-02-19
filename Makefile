@@ -12,7 +12,7 @@ else
 CC	= $(CROSS_COMPILE)gcc
 endif
 
-LD	= $(CROSS_COMPILE)ld.gold
+LD	= $(CROSS_COMPILE)ld
 NM	= $(CROSS_COMPILE)nm
 OBJCOPY	= $(CROSS_COMPILE)objcopy
 

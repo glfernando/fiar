@@ -6,6 +6,7 @@
 
 #include <common.h>
 #include <io.h>
+#include <soc/baytrail.h>
 
 static void baytrail_pcu_debug_uart_init(void)
 {
@@ -39,4 +40,10 @@ static void baytrail_pcu_debug_uart_init(void)
 void soc_early_init()
 {
 	baytrail_pcu_debug_uart_init();
+	/* uncomment below line if you want to debug fsp or some early init
+	 * function. it is as early as we can get the console */
+	//console_early_init();
+#ifdef USE_FSP
+	fsp_soc_init();
+#endif
 }

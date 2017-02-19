@@ -8,23 +8,40 @@
 
 SECTIONS
 {
+	. = DATA_BASE;
+	.data ALIGN(4): AT(_data_load) {
+		_data_start = ADDR(.data);
+                *(.data*);
+		_data_end = .;
+        }
+	.bss ALIGN(4): AT(_bss_load) {
+		_bss_start = ADDR(.bss);
+                *(.bss*);
+		. = ALIGN(4);
+		_bss_end = .;
+        }
+
+	_stack_start = .;
+	. = . + STACK_SIZE;
+	_stack_end = .;
+
         . = TEXT_BASE;
 
-	.text : {
+	.text : AT(TEXT_BASE) {
                 *(.text*);
         }
 
-	.data ALIGN(4): {
-                *(.data*);
-        }
-
-	.rodata ALIGN(4): {
+	.rodata ALIGN(4) : {
                 *(.rodata*);
+		. = ALIGN(4);
+		_data_load = .;
         }
 
-	.bss ALIGN(4): {
-                *(.bss*);
-        }
+	. = _data_load;
+	. = . + SIZEOF(.data);
+
+	_bss_load = .;
+	. = . + SIZEOF(.bss);
 
 	. = 0xFFFFFFF0;
         .resetvec : {

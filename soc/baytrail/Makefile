@@ -7,9 +7,9 @@
 mkfile_path := $(lastword $(MAKEFILE_LIST))
 cdir := $(patsubst %/,%,$(dir $(mkfile_path)))
 
-objs += $(cdir)/baytrail.o $(cdir)/ddr.o
+objs += $(cdir)/baytrail.o
 ifeq ($(USE_FSP), 1)
-objs += $(cdir)/fsp_car.o
+objs += $(cdir)/fsp_car.o $(cdir)/fsp.o
 else
 objs += $(cdir)/car.o
 endif
