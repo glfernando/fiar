@@ -12,4 +12,6 @@ ifeq ($(SOC), baytrail)
 include $(soc_dir)/baytrail/Makefile
 else ifeq ($(SOC), bochs)
 include $(soc_dir)/bochs/Makefile
+else ifeq ($(SOC), zynq)
+include $(soc_dir)/zynq/Makefile
 endif

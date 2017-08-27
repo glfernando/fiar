@@ -26,14 +26,15 @@ endif
 CFLAGS = -fno-builtin
 CFLAGS += -O2 -Wall -g
 CFLAGS += -Iinclude -include include/config.h
+CFLAGS += -fno-stack-protector
 
 ifeq ($(USE_CLANG), 1)
 CFLAGS +=
 else
-CFLAGS += -fno-stack-protector -fno-delete-null-pointer-checks
+CFLAGS += -fno-delete-null-pointer-checks
 endif
 
-LDFLAGS =  -T _fiar.lds
+LDFLAGS =  -T _fiar.lds -z noexecstack
 
 # default to x86 32 bits
 ARCH ?= i386
@@ -48,6 +49,9 @@ ifeq ($(TARGET), minnowmax)
 include Minnowmax.mk
 else ifeq ($(TARGET), bochs)
 include Bochs.mk
+else ifeq ($(TARGET), zybo)
+include Zybo.mk
+LINKER_SCRIPT := fiar_zybo.lds
 else
 $(error not valid target $(TARGET))
 endif

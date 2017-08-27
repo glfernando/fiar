@@ -4,12 +4,18 @@ Fiar is a minimal x86 ROM which is in charge of loading FSBL (first stage
 boot loader) and execute it.
 
 Right now it has only support for minnomax board
-http://wiki.minnowboard.org/MinnowBoard_Wiki_Home
+https://minnowboard.org/minnowboard-max
 And bochs emulator
 http://bochs.sourceforge.net/
+Zybo board
+https://www.xilinx.com/support/university/boards-portfolio/xup-boards/DigilentZYBO.html
 
 # to compile the code
 make TARGET=<target> clean all
 
 Where <target> can be minnowmax or bochs. If no target is passed the default
 one is minnowmax
+
+Make sure you use the right cross compile when building for zybo.
+e.g
+CROSS_COMPILE=arm-none-eabi- make USE_CLANG=0 TARGET=zybo clean all

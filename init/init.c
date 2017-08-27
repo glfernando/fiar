@@ -46,5 +46,5 @@ __noreturn void init(void)
 	main();
 
 	while (1)
-		asm ("pause");
+		;
 }

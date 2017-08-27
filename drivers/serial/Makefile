@@ -7,4 +7,11 @@
 mkfile_path := $(lastword $(MAKEFILE_LIST))
 cdir := $(patsubst %/,%,$(dir $(mkfile_path)))
 
-objs += $(cdir)/uart.o $(cdir)/ns16550_uart.o
+objs += $(cdir)/uart.o
+ifeq ($(ARCH),i386)
+objs += $(cdir)/ns16550_uart.o
+else ifeq ($(ARCH),x86_64)
+objs += $(cdir)/ns16550_uart.o
+else
+objs += $(cdir)/zynq_uart.o
+endif

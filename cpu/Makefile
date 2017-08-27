@@ -14,3 +14,6 @@ endif
 ifeq ($(ARCH),x86_64)
 include $(cpu_dir)/x86/Makefile
 endif
+ifeq ($(ARCH),arm)
+include $(cpu_dir)/arm/Makefile
+endif

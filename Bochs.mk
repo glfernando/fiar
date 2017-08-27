@@ -1,5 +1,5 @@
 #
-# (C) Copyright 2016, Intel Corporation
+# (C) Copyright 2016, Fernando Lugo <lugo.fernando@gmail.com>
 #
 # SPDX-License-Identifier:       GPL-2.0+
 #

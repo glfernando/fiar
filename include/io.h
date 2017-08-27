@@ -25,6 +25,7 @@
 #define __raw_writel writel
 #define __raw_writeq writeq
 
+#if __i386__ || __x86_64__
 static inline unsigned int inl(int port)
 {
 	unsigned long val;
@@ -60,5 +61,6 @@ static inline void outb(unsigned char v, int p)
 {
 	__asm__ __volatile__("outb %b0, %w1" : : "a"(v), "Nd"(p));
 }
+#endif /* __i386__ || __x86_64__ */
 
 #endif /* _IO_H */
